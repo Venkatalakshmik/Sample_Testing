@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault-InvalidOrderId">
+    <DisplayName>RaiseFault-InvalidOrderId</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/json">\{"code":"{settings.messages.invalidSubIdCode}","message":"{settings.messages.invalidSubIdMsg}" }</Payload>
+            <StatusCode>{settings.messages.invalidSubIdCode}</StatusCode>
+            <ReasonPhrase>{settings.messages.invalidSubIdMsg}</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

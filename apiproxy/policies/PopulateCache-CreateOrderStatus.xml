@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PopulateCache name="PopulateCache-CreateOrderStatus" enabled="true" continueOnError="false" async="false">
+    <DisplayName>PopulateCache-CreateOrderStatus</DisplayName>
+    <Properties/>
+    <CacheKey>
+        <KeyFragment ref="subscriptionId"/>
+    </CacheKey>
+    <CacheResource>orderEntity</CacheResource>
+    <Scope>Global</Scope>
+    <ExpirySettings>
+        <TimeoutInSec>5400</TimeoutInSec>
+    </ExpirySettings>
+    <Source>orderStatus</Source>
+</PopulateCache>

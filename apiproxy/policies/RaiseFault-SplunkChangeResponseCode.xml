@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault-SplunkChangeResponseCode">
+    <DisplayName>RaiseFault-SplunkChangeResponseCode</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="text/plain">{orderStatus}</Payload>
+            <StatusCode>{ptsStatusCode}</StatusCode>
+            <ReasonPhrase>OK</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

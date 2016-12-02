@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="true" enabled="true" name="ServiceCallout-PTService">
+    <DisplayName>ServiceCallout-PTService</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="myRequest">
+        <Add>
+            <Headers>
+                <Header name="Authorization">bearer {jwt_jwt}</Header>
+            </Headers>
+        </Add>
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>calloutResponse</Response>
+    <Timeout>30000</Timeout>
+    <HTTPTargetConnection>
+        <Properties/>
+        <SSLInfo>
+            <Enabled>true</Enabled>
+        </SSLInfo>
+        <URL>https://{url}/api/v1/orders/{orderId}/status?subId={subscriptionId}</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

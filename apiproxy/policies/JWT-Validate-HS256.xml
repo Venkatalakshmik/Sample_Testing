@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JavaCallout name="JWT-Validate-HS256">
+    <Properties>
+        <Property name="algorithm">HS256</Property>
+        <Property name="jwt">{orders.AuthHeader}</Property>
+        <Property name="secret-key">e82ce8186186764f8f9e575ef9899129</Property>
+        <Property name="subject">Apigee</Property>
+    </Properties>
+    <ClassName>com.apigee.callout.jwtsigned.JwtParserCallout</ClassName>
+    <ResourceURL>java://jwt-signed-edge-callout.jar</ResourceURL>
+    <DisplayName>JWT-Validate-HS256</DisplayName>
+</JavaCallout>

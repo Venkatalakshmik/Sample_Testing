@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage name="AssignMessage-PTService-Fail" enabled="true" continueOnError="false" async="false">
+    <DisplayName>AssignMessage-PTService-Fail</DisplayName>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Access-Control-Allow-Origin">*</Header>
+            <Header name="Access-Control-Allow-Method">PUT,DELETE,GET,POST</Header>
+            <Header name="Access-Control-Allow-Header">Authorization,accept,content-type,user-agent,apikey</Header>
+        </Headers>
+        <Payload contentType="application/json">\{"code":{settings.messages.ptServiceFailCode},"message":"{settings.messages.ptServiceFailMsg}" }</Payload>
+        <StatusCode>{settings.messages.ptServiceFailCode}</StatusCode>
+        <ReasonPhrase>{settings.messages.ptServiceFailMsg}</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo type="request" transport="http" createNew="false"/>
+</AssignMessage>

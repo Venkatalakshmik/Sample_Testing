@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="true" enabled="true" name="ServiceCallout-SplunkService">
+    <DisplayName>ServiceCallout-SplunkService</DisplayName>
+    <Properties/>
+    <Request clearPayload="true">
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+        <Add>
+            <Headers>
+                <!-- 79A0F60C-CF5F-4F9A-AD23-2A4D5A2661D3 , E28493C5-BFD9-4224-BF85-58704079D1D3
+                DF291F5B-15AF-4D71-9768-6D276A8E7061
+                -->
+                <Header name="Authorization">Splunk DF291F5B-15AF-4D71-9768-6D276A8E7061</Header>
+            </Headers>
+        </Add>
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+        <Set>
+            <Verb>POST</Verb>
+            <Payload type="application/json">{splunkReqObject}</Payload>
+        </Set>
+    </Request>
+    <Response>response</Response>
+    <Timeout>10000</Timeout>
+    <HTTPTargetConnection>
+        <Properties/>
+        <SSLInfo>
+            <Enabled>true</Enabled>
+        </SSLInfo>
+        <URL>https://input-prd-p-sv7grw4kjvrr.cloud.splunk.com:8088/services/collector</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

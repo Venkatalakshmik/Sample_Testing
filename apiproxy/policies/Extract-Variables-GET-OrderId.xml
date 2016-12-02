@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="Extract-Variables-GET-OrderId">
+    <DisplayName>Extract Variables-GET-OrderId</DisplayName>
+    <Properties/>
+    <URIPath>
+        <Pattern>**/orders/{orderId}/status</Pattern>
+        <Pattern>/orders/{orderId}/status</Pattern>
+        <!-- <Pattern>**/orders/{orderId}/**</Pattern>
+        <Pattern>/orders/{orderId}/**</Pattern> -->
+    </URIPath>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LookupCache async="false" continueOnError="false" enabled="true" name="LookupCache-GetOrdersStatus">
+    <DisplayName>LookupCache-GetOrdersStatus</DisplayName>
+    <Properties/>
+    <CacheKey>
+        <KeyFragment ref="subscriptionId"/>
+    </CacheKey>
+    <CacheResource>orderEntity</CacheResource>
+    <Scope>Global</Scope>
+    <AssignTo>orderStatus</AssignTo>
+</LookupCache>

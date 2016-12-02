@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<InvalidateCache async="false" continueOnError="false" enabled="true" name="InvalidateCache-FlushOrderStatus">
+    <DisplayName>InvalidateCache-FlushOrderStatus</DisplayName>
+    <Properties/>
+    <Properties/>
+    <CacheKey>
+        <!-- <KeyFragment>subscriptionId</KeyFragment>-->
+        <KeyFragment ref="subscriptionId"/>
+    </CacheKey>
+    <CacheResource>orderEntity</CacheResource>
+    <Scope>Global</Scope>
+    <!--<AssignTo>oldCacheValue</AssignTo>
+    <AssignTo>data</AssignTo> -->
+    <PurgeChildEntries>false</PurgeChildEntries>
+</InvalidateCache>

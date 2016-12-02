@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault name="RaiseFault-PTService-Fail" enabled="true" continueOnError="false" async="false">
+    <DisplayName>RaiseFault-PTService-Fail</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/json">\{"code":{Settings.messages.ptServiceFailCode},"message":{Settings.messages.ptServiceFailMsg} }</Payload>
+            <StatusCode>{Settings.messages.ptServiceFailCode}</StatusCode>
+            <ReasonPhrase>{Settings.messages.ptServiceFailMsg}</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

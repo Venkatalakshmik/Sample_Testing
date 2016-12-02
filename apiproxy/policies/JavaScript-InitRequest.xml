@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="JavaScript-InitRequest">
+    <DisplayName>JavaScript-InitRequest</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://InitRequest.js</ResourceURL>
+</Javascript>

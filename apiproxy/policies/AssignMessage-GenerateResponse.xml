@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AssignMessage-GenerateResponse">
+    <DisplayName>AssignMessage-GenerateResponse</DisplayName>
+    <Properties/>
+    <Remove>
+        <Headers>
+            <Header name="Authorization"/>
+        </Headers>
+    </Remove>
+    <Set>
+        <!-- <Headers>    <Header name="x-target-response-code">{ptsStatusCode} </Header> </Headers> -->
+        <Payload contentType="application/json">{orderStatus}</Payload>
+        <StatusCode>{ptsStatusCode}</StatusCode>
+        <ReasonPhrase>{ptsResponsePhrase}</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

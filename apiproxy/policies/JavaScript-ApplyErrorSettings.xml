@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="JavaScript-ApplyErrorSettings">
+    <DisplayName>JavaScript-ApplyErrorSettings</DisplayName>
+    <Properties/>
+    <IncludeURL>jsc://ErrorSettings.js</IncludeURL>
+    <ResourceURL>jsc://ApplyErrorSettings.js</ResourceURL>
+</Javascript>

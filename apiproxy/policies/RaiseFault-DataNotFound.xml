@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault-DataNotFound">
+    <DisplayName>RaiseFault-DataNotFound</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/json">\{"code":"{settings.messages.dataNotFoundCode}","message":"{settings.messages.dataNotFoundMsg}" }</Payload>
+            <StatusCode>{settings.messages.dataNotFoundCode}</StatusCode>
+            <ReasonPhrase>{settings.messages.dataNotFoundMsg}</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

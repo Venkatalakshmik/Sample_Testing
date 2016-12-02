@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="ExtractVariables-InitiateTracking">
+    <DisplayName>ExtractVariables-InitiateTracking</DisplayName>
+    <Properties/>
+    <QueryParam name="initiateTracking">
+        <Pattern ignoreCase="true">{initiateTracking}</Pattern>
+    </QueryParam>
+    <Source clearPayload="false">request</Source>
+    <!-- <VariablePrefix>initiateTrackings</VariablePrefix> -->
+</ExtractVariables>

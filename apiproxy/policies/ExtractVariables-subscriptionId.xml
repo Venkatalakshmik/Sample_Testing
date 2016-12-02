@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="ExtractVariables-subscriptionId">
+    <DisplayName>ExtractVariables-subscriptionId</DisplayName>
+    <Properties/>
+    <QueryParam name="subId">
+        <Pattern ignoreCase="true">{subscriptionId}</Pattern>
+    </QueryParam>
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>subscriptions</VariablePrefix>
+</ExtractVariables>

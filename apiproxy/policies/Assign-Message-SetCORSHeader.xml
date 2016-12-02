@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="Assign-Message-SetCORSHeader">
+    <DisplayName>Assign Message-SetCORSHeader</DisplayName>
+    <Properties/>
+    <AssignTo createNew="false" type="response"/>
+    <Set>
+        <Headers>
+            <!--<Header name="Access-Control-Allow-Origin">{request.header.origin}</Header>
+       <Header name="Access-Control-Allow-Headers">{reqHeaders}</Header> -->
+            <Header name="Access-Control-Allow-Origin">*</Header>
+            <Header name="Access-Control-Allow-Method">PUT,DELETE,GET,POST</Header>
+            <Header name="Access-Control-Allow-Header">Authorization,accept,content-type,user-agent,apikey</Header>
+        </Headers>
+    </Set>
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+</AssignMessage>

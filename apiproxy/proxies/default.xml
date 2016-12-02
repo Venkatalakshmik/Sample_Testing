@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <FaultRules>
+        <FaultRule name="ServiceCallout-PTServiceFail">
+            <Condition>(fault.name Matches "ScriptExecutionFailed")</Condition>
+            <Step>
+                <Name>AssignMessage-PTService-Fail</Name>
+            </Step>
+        </FaultRule>
+    </FaultRules>
+    <Description/>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="CORS-Options-PreFlight">
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>Assign-Message-SetCORSHeader</Name>
+                </Step>
+            </Response>
+            <Condition>(request.verb = "OPTIONS")</Condition>
+        </Flow>
+        <Flow name="InsertOrdersStatus">
+            <Description>Pizza Tracker service to Apigee request to insert or update orders status to cache</Description>
+            <Request>
+                <Step>
+                    <Name>ExtractVariables-OrderId</Name>
+                </Step>
+                <Step>
+                    <Name>ExtractVariables-AuthHeader</Name>
+                </Step>
+                <Step>
+                    <Name>JWT-Validate-HS256</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-ApplySettings</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-InitRequest</Name>
+                </Step>
+                <Step>
+                    <Condition>errorFlag equals "true"</Condition>
+                    <FaultRules/>
+                    <Name>RaiseFault-InvalidOrderId</Name>
+                </Step>
+                <Step>
+                    <Name>PopulateCache-CreateOrderStatus</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-SetResponseBody</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AssignMessage-OrderStatusUpdate</Name>
+                </Step>
+                <Step>
+                    <Name>Assign-Message-SetCORSHeader</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/subscriptions/**") and (request.verb = "PUT")</Condition>
+        </Flow>
+        <Flow name="GetOrdersStatus">
+            <Description>Client to Apigee request to get orders status from cache</Description>
+            <Request>
+                <Step>
+                    <Name>ExtractVariables-subscriptionId</Name>
+                </Step>
+                <Step>
+                    <Name>Extract-Variables-GET-OrderId</Name>
+                </Step>
+                <Step>
+                    <Name>ExtractVariables-InitiateTracking</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-ApplySettings</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-SubscriptionIdValidation</Name>
+                </Step>
+                <Step>
+                    <Condition>errorFlag equals "true"</Condition>
+                    <Name>RaiseFault-InvalidSubscriptionId</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-InitiateTrackingCheck</Name>
+                </Step>
+                <Step>
+                    <Condition>initTrack == "false"</Condition>
+                    <Name>LookupCache-GetOrdersStatus</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-GetResponseBody</Name>
+                </Step>
+                <Step>
+                    <Condition>(orderStatusAPGFlag == "false")</Condition>
+                    <Name>JWT-Create-HS256</Name>
+                </Step>
+                <Step>
+                    <Condition>(orderStatusAPGFlag == "false")</Condition>
+                    <Name>JavaScript-DynamicEndpoint</Name>
+                </Step>
+                <Step>
+                    <Condition>(orderStatusAPGFlag == "false")</Condition>
+                    <Name>ServiceCallout-PTService</Name>
+                </Step>
+                <Step>
+                    <Condition>(orderStatusAPGFlag == "false")</Condition>
+                    <Name>JavaScript-SetPTResponse</Name>
+                </Step>
+                <Step>
+                    <Condition>(orderStatus == null) or (orderStatus == "")</Condition>
+                    <Name>AssignMessage-PTService-Fail</Name>
+                </Step>
+                <Step>
+                    <Condition> (orderStatusAPGFlag == "false") and (ptsCodeId != "true") </Condition>
+                    <Name>PopulateCache-CreateOrderStatus</Name>
+                </Step>
+                <Step>
+                    <Name>AssignMessage-GenerateRequest</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>JavaScript-LogMetaDataToSplunkCloud</Name>
+                </Step>
+                <Step>
+                    <Name>ServiceCallout-SplunkService</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-CheckResponseFromSplunkService</Name>
+                </Step>
+                <Step>
+                    <Condition>flag equals "true"</Condition>
+                    <Name>RaiseFault-SplunkChangeResponseCode</Name>
+                </Step>
+                <Step>
+                    <Name>AssignMessage-GenerateResponse</Name>
+                </Step>
+                <Step>
+                    <Name>Assign-Message-SetCORSHeader</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/orders/*/status") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="DeleteOrdersStatus">
+            <Description>Pizza Tracker service to Apigee request to flush orders status from cache</Description>
+            <Request>
+                <Step>
+                    <Name>ExtractVariables-subscriptionId</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-ApplySettings</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-SubscriptionIdValidation</Name>
+                </Step>
+                <Step>
+                    <Condition>errorFlag equals "true"</Condition>
+                    <FaultRules/>
+                    <Name>RaiseFault-InvalidSubscriptionId</Name>
+                </Step>
+                <Step>
+                    <Name>InvalidateCache-FlushOrderStatus</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <Name>AssignMessage-DeleteRecord</Name>
+                </Step>
+                <Step>
+                    <Name>Assign-Message-SetCORSHeader</Name>
+                </Step>
+            </Response>
+            <Condition> (request.queryparam.subId != true) and (request.verb = "DELETE")</Condition>
+        </Flow>
+        <Flow name="InvalidResource">
+            <Request>
+                <Step>
+                    <Name>AssignMessage-InvalidOperation</Name>
+                </Step>
+            </Request>
+            <Response/>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/api/v1</BasePath>
+        <Properties/>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="ExtractVariables-OrderId">
+    <DisplayName>ExtractVariables-OrderId</DisplayName>
+    <Properties/>
+    <URIPath name="subscriptionId">
+        <Pattern>**/subscriptions/{subscriptionId}</Pattern>
+    </URIPath>
+    <!-- <JSONPayload>
+        <Variable name="subscriptionId">
+            <JSONPath>$.subscriptionId</JSONPath>
+        </Variable>
+    </JSONPayload> -->
+    <Source clearPayload="false">request</Source>
+    <VariablePrefix>orders</VariablePrefix>
+</ExtractVariables>
