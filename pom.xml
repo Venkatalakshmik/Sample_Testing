@@ -115,7 +115,7 @@
                             <ignoreResultFailures>true</ignoreResultFailures>
                             <suppressJMeterOutput>false</suppressJMeterOutput>
                                 <propertiesUser>
-                                    <testData>JmeterTest_all.csv</testData>
+                                    <testData>order_test.csv</testData>
                                     <threadNum>1</threadNum>
                                     <rampUpPeriodSecs>5</rampUpPeriodSecs>
                                     <loopCount>1</loopCount>
