@@ -1,0 +1,2 @@
+testcaseid,userstory,testcasedescription,servername,path,path1,path2,subscriptionId,orderId,orderStatus,execute,assertheader,env
+Order-1-1,Order-1,valid order (ordernumber),papajohns-dev1.apigee.net,/api/v1/orders/1897452974/status,api/v1/subscriptions/ced2bb31424bafa5fbaa24810d0c3a5021f96230,/api/v1,ced2bb31424bafa5fbaa24810d0c3a5021f96230,1897452974,Confirmed,Y,HTTP/1.1 200 OK,dev1

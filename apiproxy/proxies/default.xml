@@ -47,6 +47,7 @@
                     <Name>RaiseFault-InvalidOrderId</Name>
                 </Step>
                 <Step>
+                    <Condition>(errorFlag != "true")</Condition>
                     <Name>PopulateCache-CreateOrderStatus</Name>
                 </Step>
                 <Step>
@@ -54,6 +55,19 @@
                 </Step>
             </Request>
             <Response>
+                <Step>
+                    <Name>JavaScript-LogMetaDataToSplunkCloud</Name>
+                </Step>
+                <Step>
+                    <Name>ServiceCallout-SplunkService</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-CheckResponseFromSplunkService</Name>
+                </Step>
+                <Step>
+                    <Condition>flag equals "true"</Condition>
+                    <Name>RaiseFault-SplunkChangeResponseCode</Name>
+                </Step>
                 <Step>
                     <Name>AssignMessage-OrderStatusUpdate</Name>
                 </Step>
@@ -164,10 +178,27 @@
                     <Name>RaiseFault-InvalidSubscriptionId</Name>
                 </Step>
                 <Step>
+                    <Condition>(errorFlag != "true")</Condition>
                     <Name>InvalidateCache-FlushOrderStatus</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-SetResponseCodeAndPhraseForDeleteOrder</Name>
                 </Step>
             </Request>
             <Response>
+                <Step>
+                    <Name>JavaScript-LogMetaDataToSplunkCloud</Name>
+                </Step>
+                <Step>
+                    <Name>ServiceCallout-SplunkService</Name>
+                </Step>
+                <Step>
+                    <Name>JavaScript-CheckResponseFromSplunkService</Name>
+                </Step>
+                <Step>
+                    <Condition>flag equals "true"</Condition>
+                    <Name>RaiseFault-SplunkChangeResponseCode</Name>
+                </Step>
                 <Step>
                     <Name>AssignMessage-DeleteRecord</Name>
                 </Step>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<APIProxy revision="57" name="PT">
+<APIProxy revision="58" name="PT">
     <Basepaths>/api/v1</Basepaths>
     <ConfigurationVersion majorVersion="4" minorVersion="0"/>
-    <CreatedAt>1480369440636</CreatedAt>
-    <CreatedBy>vkondapalli@miraclesoft.com</CreatedBy>
+    <CreatedAt>1480945249474</CreatedAt>
+    <CreatedBy>aamanchi@miraclesoft.com</CreatedBy>
     <Description></Description>
     <DisplayName>order-v1</DisplayName>
-    <LastModifiedAt>1480686977800</LastModifiedAt>
-    <LastModifiedBy>vkondapalli@miraclesoft.com</LastModifiedBy>
+    <LastModifiedAt>1480969642300</LastModifiedAt>
+    <LastModifiedBy>aamanchi@miraclesoft.com</LastModifiedBy>
     <Policies>
         <Policy>Assign-Message-SetCORSHeader</Policy>
         <Policy>AssignMessage-DeleteRecord</Policy>
@@ -35,6 +35,7 @@
         <Policy>JavaScript-LogMetaDataToSplunkCloud</Policy>
         <Policy>JavaScript-SetPTResponse</Policy>
         <Policy>JavaScript-SetResponseBody</Policy>
+        <Policy>JavaScript-SetResponseCodeAndPhraseForDeleteOrder</Policy>
         <Policy>JavaScript-SubscriptionIdValidation</Policy>
         <Policy>JavaScript-phraseTest</Policy>
         <Policy>LookupCache-GetOrdersStatus</Policy>
@@ -62,6 +63,7 @@
         <Resource>jsc://LogMetadataToSplunkCloud.js</Resource>
         <Resource>jsc://SetPTResponse.js</Resource>
         <Resource>jsc://SetResponseBody.js</Resource>
+        <Resource>jsc://SetResponseCodeAndPhraseForDeleteOrder.js</Resource>
         <Resource>jsc://Settings.js</Resource>
         <Resource>jsc://SubscriptionIdValidation.js</Resource>
         <Resource>jsc://testForResponsePhrase.js</Resource>
